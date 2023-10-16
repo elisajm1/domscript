@@ -1,15 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>To-Do List</title>
   <style>
-    .header {
-      background-color: #36e4f4;
-      padding: 20px;
-      color: rgb(6, 1, 1);
-      text-align: left;
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
     }
 
-    ul {
+    .header {
+      background-color: #005599; 
+      padding: 20px;
+      color: white;
+      text-align: center;
+    }
+
+    .header h2 {
+      margin: 0;
+    }
+
+    #myInput {
+      width: 70%;
+      padding: 10px;
+      border: none;
+      margin: 10px;
+    }
+
+    .addBtn button {
+      background-color: #0077B6; 
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .addBtn button:hover {
+      background-color: #005599; 
+    }
+
+    .ul {
       list-style: none;
       padding: 0;
     }
@@ -17,13 +55,17 @@
     li {
       display: flex;
       align-items: center;
+      padding: 10px;
+      background-color: white;
+      margin: 5px 0;
+      box-shadow: 0 2px 2px rgba(0, 0, 0, 0.1);
     }
 
     .checkbox {
       width: 20px;
       height: 20px;
       margin-right: 10px;
-      border: 1px solid #000;
+      border: 2px solid #0077B6;
       cursor: pointer;
       display: flex;
       align-items: center;
@@ -32,16 +74,25 @@
 
     .check-mark {
       font-weight: bold;
+      font-size: 18px;
     }
 
     .task-done {
-      text-decoration: line-through;
-      color: #888;
+      background-color: #EFEFEF;
+    }
+
+    .delete-button {
+      background-color: #0077B6; 
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+    }
+
+    .delete-button:hover {
+      background-color: #005599; 
     }
   </style>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>To-Do List</title>
 </head>
 <body>
   <div id="myDIV" class="header">
@@ -50,28 +101,8 @@
     <span onclick="newElement()" class="addBtn"><button>Lisää listaan</button></span>
   </div>
 
-  <ul id="myUL">
-    <li>
-      <span class="checkbox" onclick="toggleTask(this)"><span class="check-mark"></span></span>
-      aavikkokettu
-    </li>
-    <li>
-      <span class="checkbox" onclick="toggleTask(this)"><span class="check-mark"></span></span>
-      napakettu
-    </li>
-    <li>
-      <span class="checkbox" onclick="toggleTask(this)"><span class="check-mark"></span></span>
-      ketunleipä
-    </li>
-    <li>
-      <span class="checkbox" onclick="toggleTask(this)"><span class="check-mark"></span></span>
-      kettu repolainen
-    </li>
-    <li>
-      <span class="checkbox" onclick="toggleTask(this)"><span class="check-mark"></span></span>
-      ketuttaa
-    </li>
-  </ul>
+  <div id="myUL" class="ul">
+  </div>
 
   <button class="delete-button" onclick="deleteCompletedTasks()">Poista tehdyt tehtävät</button>
 
@@ -110,6 +141,7 @@
         checkMark.textContent = "✔";
       }
     }
+
     function deleteCompletedTasks() {
       var completedTasks = document.querySelectorAll(".task-done");
       completedTasks.forEach(function(task) {

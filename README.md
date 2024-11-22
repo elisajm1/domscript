@@ -1,4 +1,4 @@
-#DOMscript
+# DOMscript
 DOM script
 / Linkki lopulliseen työhön: https://classy-paprenjak-ff68bc.netlify.app (Tämä on päivitetty versio To Do-listasta, sama linkki kuin jQuery veriossa)
 
